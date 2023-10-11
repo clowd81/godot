@@ -38,7 +38,7 @@ VARIANT_BITFIELD_CAST(MethodFlags)
 // some helpers
 
 class MethodBind {
-	int method_id;
+	int method_id = 0;
 	uint32_t hint_flags = METHOD_FLAGS_DEFAULT;
 	StringName name;
 	StringName instance_class;

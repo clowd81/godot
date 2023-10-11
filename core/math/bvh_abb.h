@@ -37,9 +37,9 @@ struct BVH_ABB {
 	struct ConvexHull {
 		// convex hulls (optional)
 		const Plane *planes;
-		int num_planes;
+		int num_planes = 0;
 		const Vector3 *points;
-		int num_points;
+		int num_points = 0;
 	};
 
 	struct Segment {
@@ -250,7 +250,7 @@ struct BVH_ABB {
 	}
 
 	void expand(real_t p_change) {
-		POINT change;
+		POINT change = {};
 		for (int axis = 0; axis < POINT::AXIS_COUNT; ++axis) {
 			change[axis] = p_change;
 		}

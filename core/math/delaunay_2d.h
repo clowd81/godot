@@ -37,7 +37,7 @@
 class Delaunay2D {
 public:
 	struct Triangle {
-		int points[3];
+		int points[3] = { 0, 0, 0 };
 		Vector2 circum_center;
 		real_t circum_radius_squared;
 		Triangle() {}
@@ -49,7 +49,7 @@ public:
 	};
 
 	struct Edge {
-		int points[2];
+		int points[2] = { 0, 0 };
 		bool bad = false;
 		Edge() {}
 		Edge(int p_a, int p_b) {

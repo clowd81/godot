@@ -172,7 +172,7 @@ void zipio_free(voidpf opaque, voidpf address) {
 }
 
 zlib_filefunc_def zipio_create_io(Ref<FileAccess> *p_data) {
-	zlib_filefunc_def io;
+	zlib_filefunc_def io = {};
 	io.opaque = (void *)p_data;
 	io.zopen_file = zipio_open;
 	io.zread_file = zipio_read;

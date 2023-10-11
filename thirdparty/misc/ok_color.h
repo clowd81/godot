@@ -26,16 +26,38 @@ class ok_color
 {
 public:
 
-struct Lab { float L; float a; float b; };
-struct RGB { float r; float g; float b; };
-struct HSV { float h; float s; float v; };
-struct HSL { float h; float s; float l; };
-struct LC { float L; float C; };
+struct Lab {
+	float L = 0;
+	float a = 0;
+	float b = 0;
+};
+struct RGB {
+	float r = 0;
+	float g = 0;
+	float b = 0;
+};
+struct HSV {
+	float h = 0;
+	float s = 0;
+	float v = 0;
+};
+struct HSL {
+	float h = 0;
+	float s = 0;
+	float l = 0;
+};
+struct LC {
+	float L = 0;
+	float C = 0;
+};
 
 // Alternative representation of (L_cusp, C_cusp)
 // Encoded so S = C_cusp/L_cusp and T = C_cusp/(1-L_cusp)
 // The maximum value for C in the triangle is then found as fmin(S*L, T*(1-L)), for a given L
-struct ST { float S; float T; };
+struct ST {
+	float S = 0;
+	float T = 0;
+};
 
 static constexpr float pi = 3.1415926535897932384626433832795028841971693993751058209749445923078164062f;
 
@@ -187,7 +209,7 @@ static LC find_cusp(float a, float b)
 static float find_gamut_intersection(float a, float b, float L1, float C1, float L0, LC cusp)
 {
 	// Find the intersection for upper and lower half seprately
-	float t;
+	float t = 0;
 	if (((L1 - L0) * cusp.C - (cusp.L - L0) * C1) <= 0.f)
 	{
 		// Lower half

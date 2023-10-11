@@ -31,8 +31,8 @@
 #include "variant_setget.h"
 
 struct VariantSetterGetterInfo {
-	void (*setter)(Variant *base, const Variant *value, bool &valid);
-	void (*getter)(const Variant *base, Variant *value);
+	void (*setter)(Variant *base, const Variant *value, bool &valid) = nullptr;
+	void (*getter)(const Variant *base, Variant *value) = nullptr;
 	Variant::ValidatedSetter validated_setter;
 	Variant::ValidatedGetter validated_getter;
 	Variant::PTRSetter ptr_setter;

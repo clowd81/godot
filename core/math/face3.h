@@ -110,7 +110,7 @@ bool Face3::intersects_aabb2(const AABB &p_aabb) const {
 	{                                                              \
 		real_t aabb_min = p_aabb.position.m_ax;                    \
 		real_t aabb_max = p_aabb.position.m_ax + p_aabb.size.m_ax; \
-		real_t tri_min, tri_max;                                   \
+		real_t tri_min = 0, tri_max = 0;                           \
 		for (int i = 0; i < 3; i++) {                              \
 			if (i == 0 || vertex[i].m_ax > tri_max)                \
 				tri_max = vertex[i].m_ax;                          \

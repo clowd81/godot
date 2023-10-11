@@ -710,10 +710,7 @@ static void _scale_cubic(const uint8_t *__restrict p_src, uint8_t *__restrict p_
 
 			T *__restrict dst = ((T *)p_dst) + (y * p_dst_width + x) * CC;
 
-			double color[CC];
-			for (int i = 0; i < CC; i++) {
-				color[i] = 0;
-			}
+			double color[CC] = { 0 };
 
 			for (int n = -1; n < 3; n++) {
 				// get Y coefficient
@@ -1349,7 +1346,7 @@ void Image::crop_from_point(int p_x, int p_y, int p_width, int p_height) {
 		return;
 	}
 
-	uint8_t pdata[16]; //largest is 16
+	uint8_t pdata[16] = { 0 }; //largest is 16
 	uint32_t pixel_size = get_format_pixel_size(format);
 
 	Image dst(p_width, p_height, false, format);
@@ -1951,7 +1948,7 @@ Error Image::generate_mipmap_roughness(RoughnessChannel p_roughness_channel, con
 	for (int y = 0; y < normal_h; y++) {
 		double line_sum[3] = { 0, 0, 0 };
 		for (int x = 0; x < normal_w; x++) {
-			double normal[3];
+			double normal[3] = { 0 };
 			Color color = nm->get_pixel(x, y);
 			normal[0] = color.r * 2.0 - 1.0;
 			normal[1] = color.g * 2.0 - 1.0;
@@ -2357,7 +2354,7 @@ void Image::initialize_data(const char **p_xpm) {
 
 					Color *colorptr = colormap.getptr(pixelstr);
 					ERR_FAIL_NULL(colorptr);
-					uint8_t pixel[4];
+					uint8_t pixel[4] = { 0 };
 					for (uint32_t i = 0; i < pixel_size; i++) {
 						pixel[i] = CLAMP((*colorptr)[i] * 255, 0, 255);
 					}
@@ -3773,7 +3770,7 @@ void Image::fix_alpha_edges() {
 			}
 
 			int closest_dist = max_dist;
-			uint8_t closest_color[3];
+			uint8_t closest_color[3] = { 0 };
 
 			int from_x = MAX(0, j - max_radius);
 			int to_x = MIN(width - 1, j + max_radius);

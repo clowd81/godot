@@ -1,8 +1,8 @@
 
 public:
 struct ItemRef {
-	uint32_t tnode_id; // -1 is invalid
-	uint32_t item_id; // in the leaf
+	uint32_t tnode_id = 0; // -1 is invalid
+	uint32_t item_id = 0; // in the leaf
 
 	bool is_active() const { return tnode_id != BVHCommon::INACTIVE; }
 	void set_inactive() {
@@ -30,32 +30,32 @@ struct ItemExtra {
 	}
 
 	// There can be multiple user defined trees
-	uint32_t tree_id;
+	uint32_t tree_id = 0;
 
 	// Defines which trees this item should collision check against.
 	// 1 << tree_id, and normally items would collide against there own
 	// tree (but not always).
-	uint32_t tree_collision_mask;
+	uint32_t tree_collision_mask = 0;
 
-	uint32_t last_updated_tick;
-	int32_t subindex;
+	uint32_t last_updated_tick = 0;
+	int32_t subindex = 0;
 
 	T *userdata;
 
 	// the active reference is a separate list of which references
 	// are active so that we can slowly iterate through it over many frames for
 	// slow optimize.
-	uint32_t active_ref_id;
+	uint32_t active_ref_id = 0;
 };
 
 // tree leaf
 struct TLeaf {
-	uint16_t num_items;
+	uint16_t num_items = 0;
 
 private:
 	uint16_t dirty;
 	// separate data orientated lists for faster SIMD traversal
-	uint32_t item_ref_ids[MAX_ITEMS];
+	uint32_t item_ref_ids[MAX_ITEMS] = { 0 };
 	BVHABB_CLASS aabbs[MAX_ITEMS];
 
 public:
@@ -114,10 +114,10 @@ struct TNode {
 	// either number of children if positive
 	// or leaf id if negative (leaf id 0 is disallowed)
 	union {
-		int32_t num_children;
-		int32_t neg_leaf_id;
+		int32_t num_children = 0;
+		int32_t neg_leaf_id = 0;
 	};
-	uint32_t parent_id; // or -1
+	uint32_t parent_id = 0; // or -1
 	uint16_t children[MAX_CHILDREN];
 
 	// height in the tree, where leaves are 0, and all above are 1+

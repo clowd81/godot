@@ -330,7 +330,7 @@ String FileAccess::get_token() const {
 
 class CharBuffer {
 	Vector<char> vector;
-	char stack_buffer[256];
+	char stack_buffer[256] = { 0 };
 
 	char *buffer = nullptr;
 	int capacity = 0;

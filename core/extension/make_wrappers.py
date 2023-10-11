@@ -73,7 +73,7 @@ def generate_ex_version(argcount, const=False, returns=False):
         sproto += "R"
         s = s.replace("$RETTYPE", "m_ret, ")
         s = s.replace("$RETVAL", "m_ret")
-        s = s.replace("$RETPRE", "m_ret ret; ZeroInitializer<m_ret>::initialize(ret);\\\n")
+        s = s.replace("$RETPRE", "m_ret ret = {}; ZeroInitializer<m_ret>::initialize(ret);\\\n")
         s = s.replace("$RETPOST", "return ret;\\\n")
 
     else:

@@ -120,10 +120,10 @@ private:
 	int mouse_from_touch_index = -1;
 
 	struct VibrationInfo {
-		float weak_magnitude;
-		float strong_magnitude;
-		float duration; // Duration in seconds
-		uint64_t timestamp;
+		float weak_magnitude = 0;
+		float strong_magnitude = 0;
+		float duration = 0; // Duration in seconds
+		uint64_t timestamp = 0;
 	};
 
 	HashMap<int, VibrationInfo> joy_vibration;
@@ -190,7 +190,7 @@ private:
 			struct {
 				JoyAxis axis;
 				JoyAxisRange range;
-				bool invert;
+				bool invert = false;
 			} axis;
 
 			struct {
@@ -198,7 +198,7 @@ private:
 				HatMask hat_mask;
 			} hat;
 
-		} input;
+		} input = {};
 
 		JoyType outputType;
 		union {

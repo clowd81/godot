@@ -429,7 +429,7 @@ float Input::get_joy_vibration_duration(int p_device) {
 
 static String _hex_str(uint8_t p_byte) {
 	static const char *dict = "0123456789abcdef";
-	char ret[3];
+	char ret[3] = { 0 };
 	ret[2] = 0;
 
 	ret[0] = dict[p_byte >> 4];

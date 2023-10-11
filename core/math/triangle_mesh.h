@@ -51,10 +51,10 @@ private:
 	struct BVH {
 		AABB aabb;
 		Vector3 center; //used for sorting
-		int left;
-		int right;
+		int left = 0;
+		int right = 0;
 
-		int face_index;
+		int face_index = 0;
 	};
 
 	struct BVHCmpX {
@@ -77,8 +77,8 @@ private:
 	int _create_bvh(BVH *p_bvh, BVH **p_bb, int p_from, int p_size, int p_depth, int &max_depth, int &max_alloc);
 
 	Vector<BVH> bvh;
-	int max_depth;
-	bool valid;
+	int max_depth = 0;
+	bool valid = false;
 
 public:
 	bool is_valid() const;

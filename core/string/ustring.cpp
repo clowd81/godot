@@ -1504,7 +1504,7 @@ String String::num(double p_num, int p_decimals) {
 		p_decimals = MAX_DECIMALS;
 	}
 
-	char fmt[7];
+	char fmt[7] = { 0 };
 	fmt[0] = '%';
 	fmt[1] = '.';
 

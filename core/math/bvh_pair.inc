@@ -8,7 +8,7 @@ struct ItemPairs {
 			userdata = ud;
 		}
 		BVHHandle handle;
-		void *userdata;
+		void *userdata = nullptr;
 	};
 
 	void clear() {
@@ -20,7 +20,7 @@ struct ItemPairs {
 	BOUNDS expanded_aabb;
 
 	// maybe we can just use the number in the vector TODO
-	int32_t num_pairs;
+	int32_t num_pairs = 0;
 	LocalVector<Link> extended_pairs;
 
 	void add_pair_to(BVHHandle h, void *p_userdata) {

@@ -596,7 +596,7 @@ public:
 	static _ALWAYS_INLINE_ float absf(float g) {
 		union {
 			float f;
-			uint32_t i;
+			uint32_t i = 0;
 		} u;
 
 		u.f = g;
@@ -607,7 +607,7 @@ public:
 	static _ALWAYS_INLINE_ double absd(double g) {
 		union {
 			double d;
-			uint64_t i;
+			uint64_t i = 0;
 		} u;
 		u.d = g;
 		u.i &= (uint64_t)9223372036854775807ll;
@@ -654,7 +654,7 @@ public:
 	static _ALWAYS_INLINE_ float halfptr_to_float(const uint16_t *h) {
 		union {
 			uint32_t u32;
-			float f32;
+			float f32 = 0;
 		} u;
 
 		u.u32 = halfbits_to_floatbits(*h);
@@ -668,7 +668,7 @@ public:
 	static _ALWAYS_INLINE_ uint16_t make_half_float(float f) {
 		union {
 			float fv;
-			uint32_t ui;
+			uint32_t ui = 0;
 		} ci;
 		ci.fv = f;
 

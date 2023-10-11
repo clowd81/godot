@@ -347,7 +347,7 @@ public:
 	// cull tests
 	int cull_aabb(const BOUNDS &p_aabb, T **p_result_array, int p_result_max, const T *p_tester, uint32_t p_tree_collision_mask = 0xFFFFFFFF, int *p_subindex_array = nullptr) {
 		BVH_LOCKED_FUNCTION
-		typename BVHTREE_CLASS::CullParams params;
+		typename BVHTREE_CLASS::CullParams params = {};
 
 		params.result_count_overall = 0;
 		params.result_max = p_result_max;
@@ -364,7 +364,7 @@ public:
 
 	int cull_segment(const POINT &p_from, const POINT &p_to, T **p_result_array, int p_result_max, const T *p_tester, uint32_t p_tree_collision_mask = 0xFFFFFFFF, int *p_subindex_array = nullptr) {
 		BVH_LOCKED_FUNCTION
-		typename BVHTREE_CLASS::CullParams params;
+		typename BVHTREE_CLASS::CullParams params = {};
 
 		params.result_count_overall = 0;
 		params.result_max = p_result_max;
@@ -383,7 +383,7 @@ public:
 
 	int cull_point(const POINT &p_point, T **p_result_array, int p_result_max, const T *p_tester, uint32_t p_tree_collision_mask = 0xFFFFFFFF, int *p_subindex_array = nullptr) {
 		BVH_LOCKED_FUNCTION
-		typename BVHTREE_CLASS::CullParams params;
+		typename BVHTREE_CLASS::CullParams params = {};
 
 		params.result_count_overall = 0;
 		params.result_max = p_result_max;
@@ -409,7 +409,7 @@ public:
 			return 0;
 		}
 
-		typename BVHTREE_CLASS::CullParams params;
+		typename BVHTREE_CLASS::CullParams params = {};
 		params.result_count_overall = 0;
 		params.result_max = p_result_max;
 		params.result_array = p_result_array;
@@ -435,9 +435,9 @@ private:
 			return;
 		}
 
-		BOUNDS bb;
+		BOUNDS bb = {};
 
-		typename BVHTREE_CLASS::CullParams params;
+		typename BVHTREE_CLASS::CullParams params = {};
 
 		params.result_count_overall = 0;
 		params.result_max = INT_MAX;

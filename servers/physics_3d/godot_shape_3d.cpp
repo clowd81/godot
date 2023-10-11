@@ -1560,16 +1560,16 @@ _Volume_BVH *_volume_build_bvh(_Volume_BVH_Element *p_elements, int p_size, int 
 	bvh->aabb = aabb;
 	switch (aabb.get_longest_axis_index()) {
 		case 0: {
-			SortArray<_Volume_BVH_Element, _Volume_BVH_CompareX> sort_x;
+			SortArray<_Volume_BVH_Element, _Volume_BVH_CompareX> sort_x = {};
 			sort_x.sort(p_elements, p_size);
 
 		} break;
 		case 1: {
-			SortArray<_Volume_BVH_Element, _Volume_BVH_CompareY> sort_y;
+			SortArray<_Volume_BVH_Element, _Volume_BVH_CompareY> sort_y = {};
 			sort_y.sort(p_elements, p_size);
 		} break;
 		case 2: {
-			SortArray<_Volume_BVH_Element, _Volume_BVH_CompareZ> sort_z;
+			SortArray<_Volume_BVH_Element, _Volume_BVH_CompareZ> sort_z = {};
 			sort_z.sort(p_elements, p_size);
 		} break;
 	}
@@ -2034,8 +2034,8 @@ void GodotHeightMapShape3D::cull(const AABB &p_local_aabb, QueryCallback p_callb
 	local_aabb.position += local_origin;
 
 	// Quantize the aabb, and adjust the start/end ranges.
-	int aabb_min[3];
-	int aabb_max[3];
+	int aabb_min[3] = { 0 };
+	int aabb_max[3] = { 0 };
 	_get_cell(local_aabb.position, aabb_min[0], aabb_min[1], aabb_min[2]);
 	_get_cell(local_aabb.position + local_aabb.size, aabb_max[0], aabb_max[1], aabb_max[2]);
 

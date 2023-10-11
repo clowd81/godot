@@ -54,7 +54,7 @@ class Delaunay3D {
 	};
 
 	struct Simplex {
-		uint32_t points[4];
+		uint32_t points[4] = { 0, 0, 0, 0 };
 		R128 circum_center_x;
 		R128 circum_center_y;
 		R128 circum_center_z;

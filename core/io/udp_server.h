@@ -51,7 +51,7 @@ protected:
 			return (ip == p_other.ip && port == p_other.port);
 		}
 	};
-	uint8_t recv_buffer[PACKET_BUFFER_SIZE];
+	uint8_t recv_buffer[PACKET_BUFFER_SIZE] = {0};
 
 	List<Peer> peers;
 	List<Peer> pending;
